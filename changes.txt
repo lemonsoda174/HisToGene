@@ -1,0 +1,9 @@
+changes for Histogene:
+
+in dataset.py, ViT_HER2ST: change self.r from 224//4 to 224//8
+in tutorial.ipynb, HistoGene training block: add patch_size = 224//4
+--> A normal patch is now of size 224/4=56 and sub_patch is of size 224/8=28
+, rather than in the original paper: 112 (patch) and 56 (subpatch for 4x resolution)
+
+doing in hope of alleviating strain on GPU usage (originally required ~20GBs of RAM
+, where the original paper mentions using a 32GB GPU)

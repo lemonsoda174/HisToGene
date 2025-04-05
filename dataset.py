@@ -223,14 +223,14 @@ class HER2ST(torch.utils.data.Dataset):
 
 class ViT_HER2ST(torch.utils.data.Dataset):
     """Some Information about HER2ST"""
-    def __init__(self,train=True,gene_list=None,ds=None,sr=False,fold=0):
+    def __init__(self,train=True,gene_list=None,ds=None,sr=False,fold=0,ratio=4):
         super(ViT_HER2ST, self).__init__()
 
         self.cnt_dir = 'data/her2st/data/ST-cnts'
         self.img_dir = 'data/her2st/data/ST-imgs'
         self.pos_dir = 'data/her2st/data/ST-spotfiles'
         self.lbl_dir = 'data/her2st/data/ST-pat/lbl'
-        self.r = 224//4
+        self.r = 224//ratio # define subpatch size
 
         # gene_list = list(np.load('data/her_hvg.npy',allow_pickle=True))
         gene_list = list(np.load('data/her_hvg_cut_1000.npy',allow_pickle=True))
